@@ -4,13 +4,13 @@ function LoginPage (){
     return (
         <div className={styles.login}>
             <div>
-                <label> Email </label>
+                <label className={styles.email}>email</label>
                 <input type="Email" />
             </div>
             
             <div>         
-                <label> Senha </label>
-                <input type="Senha" />
+                <label className={styles.senha}>senha</label>
+                <input type="senha" />
             </div>
 
             <button>Entrar</button>
