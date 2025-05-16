@@ -1,18 +1,72 @@
-.login{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
-    background-color: rgba(56, 56, 162, 0.913);
-    height: 100vh;
-    gap: 10px
-    
-}
-.email{
-    display: flex;
-    padding: 13px;
-}
-.senha{
-    display: flex;
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #003366; /* Azul institucional */
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
 }
 
+form {
+  background-color: #ffffff;
+  color: #003366;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #003366;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #f7931e; /* Laranja Senac */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(247, 147, 30, 0.2);
+}
+
+button {
+  padding: 14px;
+  background-color: #f7931e; /* Laranja Senac */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e67e00;
+}
+
+.error {
+  color: #c0392b;
+  background-color: #fdecea;
+  padding: 10px;
+  border-left: 4px solid #e74c3c;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  margin-top: -16px;
+  text-align: left;
+}
