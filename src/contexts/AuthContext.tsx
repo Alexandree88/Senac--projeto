@@ -20,7 +20,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<DecodeToken | null>(null);
 
     useEffect(() => {
-    const token = localStorage.getitem('token');
+    const token = localStorage.getItem('token');
     if(token) {
       const decoded = jwtDecode<DecodeToken>(token);
       setUser(decoded);

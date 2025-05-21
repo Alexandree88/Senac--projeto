@@ -1,6 +1,5 @@
 import React, { useState, type FormEvent } from "react";
 import styles from "./LoginPage.module.css";
-import ButtonComponent from "../../components/ButtonComponent/ButtonComponent"
 import { useAuth } from "../../contexts/AuthContext"
 
 
@@ -23,9 +22,10 @@ const LoginPage: React.FC = () => {
         }
       );
 
-      const data = await res.json();
+
 
       if (!res.ok) {
+        const data = await res.json();
         throw new Error(data.message || "Falha no login");
       }
       const { token } = await res.json();

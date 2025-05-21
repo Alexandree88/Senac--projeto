@@ -1,4 +1,4 @@
-import ButtonComponent from '../../../components/ButtonComponent/ButtonComponent'
+import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import styles from './EventsPage.module.css'
 
 function EventsPage (){

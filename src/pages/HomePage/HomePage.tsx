@@ -1,3 +1,4 @@
+import NavBarComponent from '../../components/NavBar/NavBarComponent';
 import styles from './HomePage.module.css'
 
 function HomePage() {

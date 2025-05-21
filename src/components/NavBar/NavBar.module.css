@@ -1,0 +1,43 @@
+/* Menu principal */
+.menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espaço entre logo e links */
+  background-color: #004C94; /* Azul Senac */
+  padding: 0.5rem 1rem;
+}
+
+/* Logo */
+.logo {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none; /* Remove sublinhado se for um <a> */
+}
+
+/* Container dos botões/links de navegação */
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Estilo comum para links e botões */
+.nav-links > a,
+.nav-links > button {
+  background-color: #F7941D; /* Laranja Senac */
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito hover para links e botões */
+.nav-links > a:hover,
+.nav-links > button:hover {
+  background-color: #e67e00; /* Tom mais escuro de laranja */
+}
