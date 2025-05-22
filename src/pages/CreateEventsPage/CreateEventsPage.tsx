@@ -11,7 +11,7 @@ export default function CreateEventsPage() {
   const [error, setError] = useState<string | null>(null);
   const [sucess, setSucess] = useState<boolean>(false)
 
-  const handLeSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
     setSucess(false);
@@ -21,14 +21,14 @@ export default function CreateEventsPage() {
        return;
     }
 
-    constformData = new FormData();
+    const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
     formData.append("location", location);
     formData.append("price", String(price));
-    FormData.append("banner", bannerFile);
+    formData.append("banner", bannerFile);
 
-    const token = LocalStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) {
         setError("Usuário não autenticado.");
         return;
@@ -38,9 +38,9 @@ export default function CreateEventsPage() {
        const res = await fetch(
         "https://senac-eventos-cultural-backend-production.up.railway.app/events",
         {
-            method "POST"
+            method: "POST",
             headers: {
-                Authorization: ´`Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: formData
         }
@@ -49,10 +49,10 @@ export default function CreateEventsPage() {
        
       
     if (!res.ok) {
-      const data = await resizeBy.json();
-      throw new Error(data.message || `Erro $(res.status)`);  
+      const data = await res.json();
+      throw new Error(data.message || `Erro ${res.status}`);  
     }
-    }
+    
    
     setSucess(true);
     // opcional: limpar o form
@@ -61,29 +61,81 @@ export default function CreateEventsPage() {
     setLocation("");
     setPrice(0);
     setBannerFile(null);
-    
-
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    setError(msg);
   }
-
-
-  }
-
-   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+ };
   
   return (
         <>
-        <h1>teste</h1>
-        </>
-    );
+        <NavBarComponent />
+        <div className={styles.container}>
+          <h1>Criar Evento</h1>
+          {error && <div className={styles.error}>{error}</div>}
+          {sucess && (
+            <div className={styles.sucess}> Evento criado com sucesso</div>
+          )}
+
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <label>
+              Titulo
+              <input
+                 type="text"
+                 value={title}
+                 onChange={(e) => setTitle(e.target.value)}
+                 required
+                 />
+                 </label>
+
+                 <label>
+                  Descrição
+                  <textarea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                   /> 
+                 </label>
+
+                <label>
+                  Localização 
+                  <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    required
+                   /> 
+                </label>
+
+                <label>
+                  Preço(R$)
+                  <input
+                  type="number"
+                  min="0"
+                  value={price}
+                  onChange={(e) => setPrice(Number(e.target.value))}
+                  required
+                  />
+                </label>
+
+                <label>
+                  Banner
+                  <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    if (e.target.files?.[0]) setBannerFile(e.target.files[0]);
+                  }}
+                  required
+                  />
+                </label>
+
+                <button type="submit"> Criar Evento</button>
+              </form>
+            </div>
+           </>
+        );
+               
+
+
 }
