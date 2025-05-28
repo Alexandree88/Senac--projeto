@@ -1,7 +1,17 @@
-function ButtonComponent() {
-    return(
-        <button>Clique Aqui</button>
-    )
+import React from 'react';
+
+interface ButtonComponentProps {
+  text: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: () => void;
 }
 
-export default ButtonComponent
+function ButtonComponent({ text, type = 'button', onClick }: ButtonComponentProps) {
+  return (
+    <button type={type} onClick={onClick}>
+      {text}
+    </button>
+  );
+}
+
+export default ButtonComponent;
